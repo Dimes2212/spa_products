@@ -33,7 +33,7 @@ export default function CreateProduct() {
       thumbnail: thumbnail.trim(),
     });
 
-    router.push(`/products/${id}`);
+    router.push(`/product?id=${id}`);
   }
 
   return (

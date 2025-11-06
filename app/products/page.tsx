@@ -47,7 +47,7 @@ function Card({ id }: { id: number }) {
       onClick={(e) => {
         const target = e.target as HTMLElement;
         if (target.closest('.icon-btn')) return; // не переходить по клику на иконки
-        router.push(`/products/${id}`);
+        router.push(`/product?id=${id}`);
       }}
     >
       <img src={p.thumbnail} alt={p.title} />

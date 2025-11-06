@@ -1,21 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
-
-export default nextConfig;
-
-
-/** @type {import('next').NextConfig} */
-const isGH = process.env.GH_PAGES === '1'
-const repo = 'spa_products' // ← ЗАМЕНИ на имя твоего репозитория
-
+const repo = 'spa_products';
+const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   output: 'export',
-  trailingSlash: true,
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
   images: { unoptimized: true },
-  basePath: isGH ? `/${repo}` : '',
-  assetPrefix: isGH ? `/${repo}/` : '',
-}
+};
