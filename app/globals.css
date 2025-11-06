@@ -1,0 +1,113 @@
+:root { 
+    --gap: 12px; 
+    --card-w: 280px; 
+    font-family: ui-sans-serif, system-ui, -apple-system; 
+}
+
+*{ 
+    box-sizing:border-box 
+} 
+
+body{ 
+    margin:0; 
+    background:#f7f7f8;
+    color:#111 
+}
+
+a{ 
+    color:inherit; 
+    text-decoration:none 
+}
+
+.container{ 
+    max-width:1200px; 
+    margin:0 auto; 
+    padding:16px 
+}
+
+.header{ 
+    display:flex; 
+    gap:12px; 
+    align-items:center; 
+    justify-content:space-between; 
+}
+
+nav{
+     display:flex; 
+     gap:8px 
+}
+
+button{ 
+    padding:8px 10px; 
+    border:1px solid #ddd; 
+    border-radius:8px; 
+    background:#fff; 
+    cursor:pointer 
+}
+
+button.primary{ 
+    background:#111; 
+    color:#fff; 
+    border-color:#111 
+}
+
+.grid{ display:grid; 
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr)); 
+    gap: var(--gap); 
+}
+
+.card{ background:#fff; 
+    border:1px solid #eee; 
+    border-radius:12px; overflow:hidden; 
+    box-shadow:0 1px 3px rgba(0,0,0,.05); 
+    display:flex; 
+    flex-direction:column; 
+}
+
+.card img{ width:100%; 
+    height:180px; 
+    object-fit:cover; 
+}
+
+.card-body{ padding:12px; 
+    display:flex; 
+    flex-direction:column; 
+    gap:8px; 
+    min-height:160px 
+}
+
+.row{ display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    gap:8px 
+}
+
+.badge{ padding:2px 8px; 
+    background:#f0f2f4; 
+    border-radius:999px; 
+    font-size:12px 
+}
+
+.icon-btn{ background:none; 
+    border:none; 
+    cursor:pointer; 
+    padding:6px; 
+    border-radius:8px 
+}
+
+.icon-btn:hover{ background:#f2f2f3 }
+
+.like{ color:#aaa } 
+.like.active{ color:#e11d48 }
+
+.line-clamp{ display:-webkit-box; 
+    -webkit-line-clamp:3;
+    line-clamp:3;
+    -webkit-box-orient:vertical; 
+    overflow:hidden; 
+}
+
+.empty{ padding:24px; 
+    text-align:center; 
+    color:#666 
+}
