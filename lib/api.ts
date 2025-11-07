@@ -7,13 +7,19 @@ const clientBase = () => {
     return prefix;
 };
 
-export async function fetchProducts(): Promise<ProductResponse> {
-    const res = await fetch(`${clientBase()}/products.json`, {cache: 'no-store'});
+export async function fetchProducts() {
+    
+    const base =
+      process.env.NODE_ENV === 'production'
+        ? '/spa_products'
+        : '';
+    const res = await fetch(`${base}/products.json`);
     if (!res.ok) {
-        throw new Error('Failed to load products');
+      throw new Error(`Ошибка загрузки: ${res.status}`);
     }
-    return res.json() as Promise<{products: any[]; total: number}>
-}
+    return res.json();
+  }
+  
 
 export async function fetchProductById(id: number): Promise<Product> {
     const data = await fetchProducts();
