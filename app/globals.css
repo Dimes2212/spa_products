@@ -111,3 +111,5 @@ button.primary{
     text-align:center; 
     color:#666 
 }
+
+.pagination .icon-btn[disabled] { opacity: .5; cursor: not-allowed; }

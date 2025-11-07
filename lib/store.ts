@@ -23,23 +23,50 @@ type State = {
   filter: Filter
   loading: boolean
   error?: string
+  page: number            
+  perPage: number 
+  search: string          
 }
+
 type Actions = {
   setFilter: (f: Filter) => void
+  setPage: (p: number) => void          
+  setPerPage: (n: number) => void       
   loadList: () => Promise<void>
   loadOne: (id: number) => Promise<Product | null>
   toggleLike: (id: number) => void
   remove: (id: number) => void
   createLocal: (p: Omit<Product,'id'>) => number
+  setSearch: (q: string) => void  
 }
+
 
 export const useProducts = create<State & Actions>((set, get) => ({
   items: {}, 
   order: [], 
   filter: 'all', 
   loading: false,
+  page: 1,
+  perPage: 9,
+  search: '',
 
-  setFilter(f) { set({ filter: f}) },
+  setFilter(f) {
+    set({ filter: f, page: 1 });
+  },
+
+  setPage(p) {
+    set({ page: Math.max(1, Math.floor(p)) });
+  },
+
+  setPerPage(n) {
+    const per = Math.max(1, Math.floor(n));
+    set({ perPage: per, page: 1 }); 
+  },
+
+  setSearch(q) {
+    const query = q.trim();
+    set({ search: query, page: 1 }); 
+  },
 
   async loadList() {
     set({ loading: true, error: undefined })
